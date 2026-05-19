@@ -9,7 +9,9 @@ public class MainRoyalDelish {
         int nomorAntrian = 1;
 
         do {
-            System.out.println("\n=== RESTO ROYAL DELISH ===");
+            System.out.println("\n================================");
+            System.out.println("====== RESTO ROYAL DELISH ======");
+            System.out.println("================================");
             System.out.println("1. Tambah Antrian");
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian & Input Pesanan");
