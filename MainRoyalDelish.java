@@ -2,8 +2,8 @@ import java.util.Scanner;
 public class MainRoyalDelish {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        AntrianPembeli antrian = new AntrianPembeli();
-        DaftarPesanan daftar = new DaftarPesanan();
+        AntrianPembeli antrian = new AntrianPembeli(); // Membuat objek antrian pembeli
+        DaftarPesanan daftar = new DaftarPesanan(); // Membuat objek daftar pesanan
 
         int pilihan;
         int nomorAntrian = 1;

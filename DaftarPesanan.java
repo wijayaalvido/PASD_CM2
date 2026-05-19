@@ -2,12 +2,12 @@ public class DaftarPesanan {
     NodePesanan head, tail;
     int totalPendapatan = 0;
 
-    public boolean isEmpty() {
+    public boolean isEmpty() { // Method untuk mengecek apakah daftar pesanan kosong
         return head == null;
     }
 
-    public void tambahPesanan(Pesanan data) {
-        NodePesanan newNode = new NodePesanan(null, data, null);
+    public void tambahPesanan(Pesanan data) { // Method untuk menambah pesanan ke daftar
+        NodePesanan newNode = new NodePesanan(null, data, null); // Membuat node baru dengan data pesanan
 
         if (isEmpty()) {
             head = tail = newNode;
@@ -20,7 +20,7 @@ public class DaftarPesanan {
         totalPendapatan += data.harga;
     }
 
-    public void sortPesanan() {
+    public void sortPesanan() { // Method untuk mengurutkan pesanan berdasarkan nama pesanan menggunakan bubble sort
         if (head == null) return;
 
         boolean swapped;
@@ -40,7 +40,7 @@ public class DaftarPesanan {
         } while (swapped);
     }
 
-    public void tampilkanPesanan() {
+    public void tampilkanPesanan() { // Method untuk menampilkan daftar pesanan
         if (isEmpty()) {
             System.out.println("Belum ada pesanan.");
             return;

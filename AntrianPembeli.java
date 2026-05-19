@@ -2,14 +2,14 @@ public class AntrianPembeli {
     NodePembeli head, tail;
     int size = 0;
 
-    public boolean isEmpty() {
+    public boolean isEmpty() { // Method untuk mengecek apakah antrian kosong
         return head == null;
     }
 
-    public void tambahAntrian(Pembeli data) {
-        NodePembeli newNode = new NodePembeli(null, data, null);
+    public void tambahAntrian(Pembeli data) { // Method untuk menambah pembeli ke antrian
+        NodePembeli newNode = new NodePembeli(null, data, null); // Membuat node baru dengan data pembeli
 
-        if (isEmpty()) {
+        if (isEmpty()) { // Jika antrian kosong, head dan tail akan menunjuk ke node baru
             head = tail = newNode;
         } else {
             tail.next = newNode;
@@ -19,7 +19,7 @@ public class AntrianPembeli {
         size++;
     }
 
-    public Pembeli hapusAntrian() {
+    public Pembeli hapusAntrian() { // Method untuk menghapus pembeli dari antrian
         if (isEmpty()) {
             System.out.println("Antrian kosong!");
             return null;
@@ -38,7 +38,7 @@ public class AntrianPembeli {
         return removed;
     }
 
-    public void cetakAntrian() {
+    public void cetakAntrian() { // Method untuk mencetak daftar pembeli yang sedang mengantri
         if (isEmpty()) {
             System.out.println("Antrian kosong!");
             return;
