@@ -31,7 +31,7 @@ public class AntrianPembeli {
             head = tail = null;
         } else {
             head = head.next;
-            head.prev = null;
+            head.prev = null; 
         }
 
         size--;

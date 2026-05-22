@@ -20,47 +20,75 @@ public class DaftarPesanan {
         totalPendapatan += data.harga;
     }
 
-    public void sortPesanan() { // Method untuk mengurutkan pesanan berdasarkan nama pesanan menggunakan bubble sort
+   public void sortPesanan() {
+
         if (head == null) return;
 
-        boolean swapped;
-        do {
-            swapped = false;
-            NodePesanan current = head;
+        for (NodePesanan i = head; i.next != null; i = i.next) {
 
-            while (current.next != null) {
-                if (current.data.namaPesanan.compareToIgnoreCase(current.next.data.namaPesanan) > 0) {
-                    Pesanan temp = current.data;
-                    current.data = current.next.data;
-                    current.next.data = temp;
-                    swapped = true;
+            for (NodePesanan j = head; j.next != null; j = j.next) {
+
+                if (j.data.namaPesanan.compareToIgnoreCase(j.next.data.namaPesanan) > 0) {
+
+                    Pesanan temp = j.data;
+                    j.data = j.next.data;
+                    j.next.data = temp;
                 }
-                current = current.next;
             }
-        } while (swapped);
+        }
     }
 
-    public void tampilkanPesanan() { // Method untuk menampilkan daftar pesanan
-        if (isEmpty()) {
-            System.out.println("Belum ada pesanan.");
-            return;
-        }
+     public void sortHargaDesc() {
 
+        if (head == null) return;
+
+        for (NodePesanan i = head; i.next != null; i = i.next) {
+
+            for (NodePesanan j = head; j.next != null; j = j.next) {
+
+                if (j.data.harga < j.next.data.harga) {
+
+                    Pesanan temp = j.data;
+                    j.data = j.next.data;
+                    j.next.data = temp;
+                }
+            }
+        }
+    }
+
+    public void tampilkanPesanan(int modeSort) {
+
+    if (isEmpty()) {
+        System.out.println("Belum ada pesanan.");
+        return;
+    }
+
+    // Mode 1 = urut nama pesanan
+    if (modeSort == 1) {
         sortPesanan();
+    }
 
-        NodePesanan current = head;
-        System.out.printf("%-8s %-20s %-10s %-15s\n",
-        "Kode", "Nama Pesanan", "Harga", "Pembeli");
-        while (current != null) {
-        
-            System.out.printf("%-8d %-20s %-10d %-15s\n",
-                    current.data.kodePesanan,
-                    current.data.namaPesanan,
-                    current.data.harga,
-                    current.data.namaPembeli);
-            current = current.next;
-        }
+    // Mode 2 = urut harga
+    else if (modeSort == 2) {
+        sortHargaDesc();
+    }
 
-        System.out.println("Total Pendapatan: Rp " + totalPendapatan);
+    NodePesanan current = head;
+
+    System.out.printf("%-8s %-20s %-10s %-15s\n",
+            "Kode", "Nama Pesanan", "Harga", "Pembeli");
+
+    while (current != null) {
+
+        System.out.printf("%-8d %-20s %-10d %-15s\n",
+                current.data.kodePesanan,
+                current.data.namaPesanan,
+                current.data.harga,
+                current.data.namaPembeli);
+
+        current = current.next;
+    }
+
+    System.out.println("Total Pendapatan: Rp " + totalPendapatan);
     }
 }

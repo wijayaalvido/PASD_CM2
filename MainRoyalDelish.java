@@ -5,8 +5,18 @@ public class MainRoyalDelish {
         AntrianPembeli antrian = new AntrianPembeli(); // Membuat objek antrian pembeli
         DaftarPesanan daftar = new DaftarPesanan(); // Membuat objek daftar pesanan
 
+        // Menambahkan 4 data pembeli dummy langsung melalui constructor
+        // agar antrian sudah terisi saat program dijalankan
+
+        antrian.tambahAntrian(new Pembeli(1, "Andi", "081234567890"));
+        antrian.tambahAntrian(new Pembeli(2, "Budi", "082345678901"));
+        antrian.tambahAntrian(new Pembeli(3, "Citra", "083456789012"));
+        antrian.tambahAntrian(new Pembeli(4, "Dina", "084567890123"));
+
+        // Nomor antrian dimulai dari 5 karena data awal sudah ada 4
+        int nomorAntrian = 5;
+
         int pilihan;
-        int nomorAntrian = 1;
 
         do {
             System.out.println("\n================================");
@@ -65,17 +75,30 @@ public class MainRoyalDelish {
                     break;
 
                 case 4:
-                    daftar.tampilkanPesanan();
+                    System.out.println("\n=== MODE LAPORAN PESANAN ===");
+                    System.out.println("1. Urut Nama Pesanan (A-Z)");
+                    System.out.println("2. Urut Harga (Termahal -> Termurah)");
+                    System.out.print("Pilih mode: ");
+
+                    int mode = sc.nextInt();
+
+                    // Menampilkan laporan sesuai mode yang dipilih
+                    daftar.tampilkanPesanan(mode);
+                    while (mode != 1 && mode != 2) {
+                        System.out.println("Mode tidak valid! Silakan pilih 1 atau 2.");
+                        System.out.print("Pilih mode: ");
+                        mode = sc.nextInt();
+                    }
                     break;
 
                 case 5:
-                    System.out.println("Terima kasih.");
+                    daftar.sortHargaDesc();
                     break;
 
                 default:
                     System.out.println("Menu tidak valid!");
             }
 
-        } while (pilihan != 5);
+        } while (pilihan != 0);
     }
 }
